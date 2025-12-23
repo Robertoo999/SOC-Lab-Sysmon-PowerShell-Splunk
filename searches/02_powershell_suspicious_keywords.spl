@@ -1,0 +1,5 @@
+index=main source="XmlWinEventLog:Microsoft-Windows-Sysmon/Operational" EventCode=1 earliest=-24h
+(Image="*\\powershell.exe" OR Image="*\\pwsh.exe")
+(CommandLine="*IEX*" OR CommandLine="*Invoke-Expression*" OR CommandLine="*FromBase64String*" OR CommandLine="*DownloadString*" OR CommandLine="*Invoke-WebRequest*" OR CommandLine="*curl *" OR CommandLine="*bitsadmin*")
+| table _time host User ParentImage CommandLine
+| sort -_time

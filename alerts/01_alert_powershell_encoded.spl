@@ -1,0 +1,5 @@
+index=main source="XmlWinEventLog:Microsoft-Windows-Sysmon/Operational" EventCode=1 earliest=-5m
+(Image="*\\powershell.exe" OR Image="*\\pwsh.exe")
+(CommandLine="*-enc *" OR CommandLine="*-encodedcommand *")
+| stats count as matches values(host) as hosts values(User) as users values(CommandLine) as samples
+| where matches >= 1

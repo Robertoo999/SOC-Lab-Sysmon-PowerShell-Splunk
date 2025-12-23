@@ -1,0 +1,5 @@
+index=main source="XmlWinEventLog:Microsoft-Windows-Sysmon/Operational" EventCode=1 earliest=-24h
+(Image="*\\powershell.exe" OR Image="*\\pwsh.exe")
+(ParentImage="*\\WINWORD.EXE" OR ParentImage="*\\EXCEL.EXE" OR ParentImage="*\\OUTLOOK.EXE" OR ParentImage="*\\wscript.exe" OR ParentImage="*\\cscript.exe" OR ParentImage="*\\mshta.exe" OR ParentImage="*\\rundll32.exe")
+| stats count as hits values(ParentImage) as parents values(CommandLine) as cmd_samples latest(_time) as last_seen by host User
+| sort -hits
