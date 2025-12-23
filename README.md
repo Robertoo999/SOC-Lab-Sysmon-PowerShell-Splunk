@@ -54,4 +54,18 @@ Detects PowerShell executions with encoded commands (`-enc` / `-EncodedCommand`)
 
 ### 2) PowerShell Suspicious Keywords
 Detects PowerShell commands containing suspicious keywords commonly used for download/execute and basic malicious activity.
-- SPL:
+- SPL: `alerts/02_alert_powershell_suspicious_keywords.spl`
+- Screenshot: `screenshots/alerts/alert2_overview.png`
+
+## Triage / Analyst Notes
+Quick triage workflow for suspicious PowerShell (Sysmon) is documented here:
+- `playbook/triage_powershell_sysmon.md`
+
+## Skills Demonstrated (SOC L1-ready)
+- ingest Sysmon telemetry into Splunk (UF + Windows Event Log)
+- write basic SPL for detection and investigation
+- build a small dashboard for endpoint execution visibility
+- implement alerts for common PowerShell attack patterns
+- document triage steps and escalation logic
+
+**Author:** Robert Orzełowski
